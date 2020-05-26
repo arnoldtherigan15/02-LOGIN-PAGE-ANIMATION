@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rolling Eye</title>
+</head>
+<body>
+    <div class="body">
+        <div class="ear1"></div>
+        <div class="ear2"></div>
+        <div class="face">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+        </div>
+        <div class="red1"></div>
+        <div class="red2"></div>
+        <form>
+            <input type="email" placeholder="your email">
+            <input type="password" placeholder="your password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector('body')
+            .addEventListener('mousemove', eyeball)
+        function eyeball () {
+            let eye = document.querySelectorAll('.eye')
+            eye.forEach(el => {
+                let x = (el.getBoundingClientRect().left) + (el.clientWidth / 2)
+                let y = (el.getBoundingClientRect().top) + (el.clientHeight / 2)
+                let radian = Math.atan2(event.pageX - x, event.pageY - y)
+                let rot = (radian * (180 / Math.PI) * -1) + 270
+                el.style.transform = "rotate(" + rot + "deg)"
+            });
+        }
+    </script>
+</body>
+</html>
